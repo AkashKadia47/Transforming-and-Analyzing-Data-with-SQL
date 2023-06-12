@@ -26,8 +26,7 @@ SQL Queries:
 
     SELECT als.city, als.country, AVG(p.orderedquantity) AS avg_product_ordered
     FROM products p
-    JOIN all_Sessions als 
-        ON p.productsku = als.productsku
+    JOIN all_Sessions als USING(productsku)
     GROUP BY als.city, als.country
     ORDER BY als.city, als.country;
 
@@ -35,15 +34,23 @@ SQL Queries:
 
     SELECT als.city, als.country, ROUND(AVG(p.orderedquantity)) AS avg_product_ordered
     FROM products p
-    JOIN all_Sessions als 
-    	ON p.productsku = als.productsku
+    JOIN all_Sessions als USING(productsku)
     GROUP BY als.city, als.country
     ORDER BY als.city, als.country;
+    
+    --total_average_product_ordered 
+    
+    SELECT AVG(orderedquantity) AS total_avg_product_ordered
+    FROM
+	(
+		SELECT als.city, als.country, p.orderedquantity
+		FROM products p
+		JOIN all_Sessions als USING(productsku)
+	) AS asd
 
 Answer:
 
-
-
+Average of total products ordered from each city and countries : 517.3914968323028776
 
 
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
