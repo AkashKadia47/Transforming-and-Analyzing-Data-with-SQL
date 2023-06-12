@@ -5,20 +5,40 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 
 SQL Queries:
-
-
+       
+    SELECT city, country, SUM(totaltransactionrevenue) AS transactionrevenue
+    FROM all_sessions
+    GROUP BY city, country
+    ORDER BY city DESC , country DESC
+    LIMIT 1;
 
 Answer:
 
+City: Zurich
 
+Country: Switzerland
 
+Transactionrevenue total: 16990000
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
-
 SQL Queries:
 
+    SELECT als.city, als.country, AVG(p.orderedquantity) AS avg_product_ordered
+    FROM products p
+    JOIN all_Sessions als 
+        ON p.productsku = als.productsku
+    GROUP BY als.city, als.country
+    ORDER BY als.city, als.country;
 
+    --or rounding the avg
+
+    SELECT als.city, als.country, ROUND(AVG(p.orderedquantity)) AS avg_product_ordered
+    FROM products p
+    JOIN all_Sessions als 
+    	ON p.productsku = als.productsku
+    GROUP BY als.city, als.country
+    ORDER BY als.city, als.country;
 
 Answer:
 
