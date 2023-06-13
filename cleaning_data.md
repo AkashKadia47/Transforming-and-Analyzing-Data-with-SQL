@@ -8,7 +8,8 @@ By cleaning the data I will be addressing the following issues,
 4) Renaming the columns
 5) Removing duplicates
 
-Moreover, I will adopt a systematic approach to clean each column individually. This will involve a comprehensive examination of the column values and their relationships with other data elements. Through this process, I will gain insights into the specific cleaning requirements for each column. This may include routine procedures such as **adjusting formats, correcting capitalization, and applying mathematical transformations**. For more complex cases, advanced techniques will be utilized as needed.
+For Data Validation and Data normalization; <br>
+I will adopt a systematic approach to clean each column individually. This will involve a comprehensive examination of the column values and their relationships with other data elements. Through this process, I will gain insights into the specific cleaning requirements for each column. This may include routine procedures such as **adjusting formats, correcting capitalization, and applying mathematical transformations**. For more complex cases, advanced techniques will be utilized as needed.
 
 
 Queries:
@@ -132,7 +133,7 @@ UPDATE all_sessions
 SET totaltransactionrevenue = ROUND(totaltransactionrevenue::numeric, 2);
 ```
 
-<h3>Step 2: changing null values to appropriate values</h3>
+*Step 2: changing null values to appropriate values*
 
 ```sql
 UPDATE all_sessions
